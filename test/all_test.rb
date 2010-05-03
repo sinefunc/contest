@@ -127,4 +127,16 @@ class TestBaz < Test::Unit::TestCase
   end
 
   context "empty context"
+
+  context "some context with a pending test" do
+    def pend(name)
+      @pending = name
+    end
+
+    teardown do
+      assert_equal "do this and that", @pending
+    end
+
+    should "do this and that"
+  end
 end
