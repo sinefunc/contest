@@ -38,13 +38,8 @@ class Test::Unit::TestCase
   end
 
   def self.test(name, &block)
-    if block_given?
-      define_method(test_name(name), &block)
-    else
-      define_method(test_name(name)) do
-        pend name
-      end
-    end
+    block ||= lambda { print "P" }
+    define_method(test_name(name), &block)
   end
 
   class << self
