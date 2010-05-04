@@ -129,12 +129,12 @@ class TestBaz < Test::Unit::TestCase
   context "empty context"
 
   context "some context with a pending test" do
-    def print(str)
-      @printed = str
+    def pend(str)
+      @pending = str
     end
 
     teardown do
-      assert_equal "P", @printed
+      assert_equal "do this and that", @pending
     end
 
     should "do this and that"
